@@ -185,12 +185,17 @@
       transform: translateY(0);
     }
 
-    /* --- Interlocking Side Ring Layout Structure --- */
+    /* --- Final Closing Section Stack Container Layout --- */
+    .closing {
+      text-align: center;
+      position: relative;
+    }
+
     .rings-wrapper {
       position: relative;
       width: 100%;
-      height: 120px;
-      margin: 35px auto 0;
+      height: 140px;
+      margin: 30px auto 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -228,12 +233,9 @@
       text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
     }
 
-    #leftScrollRing {
-      transform: translateX(-50vw) rotate(-45deg);
-    }
-
-    #rightScrollRing {
-      transform: translateX(50vw) rotate(45deg);
+    /* Initial base state: Hidden offscreen until scrolled near */
+    #leftScrollRing, #rightScrollRing {
+      opacity: 0;
     }
 
     .hero {
@@ -276,7 +278,7 @@
       padding: 64px 0;
     }
 
-    /* --- Mobile Typography Locking Matrix --- */
+    /* --- Mobile Typography Matrix --- */
     .names {
       display: flex;
       flex-direction: column;
@@ -801,7 +803,7 @@
       <div class="container details scroll-reveal">
         <div class="panel">
           <p class="eyebrow">The Wedding</p>
-          <h3>Cheshire Gallery</h3>
+          <h3>Cheshire Village</h3>
           <p>Cheshire Village is a beautifully landscaped beach side property, ideal for nature lovers and joyful celebrations.</p>
           <p><strong>September 07, 2026<br>Muhurtham 10:00 - 11:00</strong></p>
           <a class="location-button" href="https://maps.app.goo.gl/weJ5dVn6Vyxkk4RMA" target="_blank" rel="noopener">Click Here For Location</a>
@@ -944,7 +946,7 @@
       }
     });
 
-    // --- High Precision Localized Scroll Ring Engine (Fixed Corner Start) ---
+    // --- High Precision Corner-to-Center Scroll Ring Engine ---
     const leftRing = document.getElementById("leftScrollRing");
     const rightRing = document.getElementById("rightScrollRing");
 
@@ -954,18 +956,35 @@
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const currentScroll = window.scrollY;
       
-      const ratio = maxScroll > 0 ? Math.min(1, currentScroll / maxScroll) : 0;
-      const halfScreenWidth = window.innerWidth / 2;
+      // Target animation window to activate only when scrolling into the final viewport view
+      const triggerThreshold = maxScroll * 0.75;
+      if (currentScroll < triggerThreshold) {
+        leftRing.style.opacity = "0";
+        rightRing.style.opacity = "0";
+        return;
+      }
       
+      // Normalize animation scroll window ratio sequence
+      const ratio = Math.min(1, (currentScroll - triggerThreshold) / (maxScroll - triggerThreshold));
+      
+      // Fixed corner-point pixel boundaries matching your marked screenshot positions
+      const halfScreenWidth = window.innerWidth / 2;
+      const verticalStartOffset = -280; // Hidden at the top corners of the section container
+      
+      // Trajectory glide calculations pulling them down and in
       let leftX = -halfScreenWidth + (ratio * (halfScreenWidth - 14));  
       let rightX = halfScreenWidth - (ratio * (halfScreenWidth - 14)); 
-      let leftRotate = -45 + (ratio * 45);
-      let rightRotate = 45 - (ratio * 45);
+      let currentY = verticalStartOffset - (ratio * verticalStartOffset);
+      
+      let leftRotate = -90 + (ratio * 90);
+      let rightRotate = 90 - (ratio * 90);
 
-      leftRing.style.transform = `translateX(${leftX}px) rotate(${leftRotate}deg)`;
-      rightRing.style.transform = `translateX(${rightX}px) rotate(${rightRotate}deg)`;
+      leftRing.style.opacity = "1";
+      rightRing.style.opacity = "1";
+      leftRing.style.transform = `translate(${leftX}px, ${currentY}px) rotate(${leftRotate}deg)`;
+      rightRing.style.transform = `translate(${rightX}px, ${currentY}px) rotate(${rightRotate}deg)`;
 
-      if (ratio >= 0.96) {
+      if (ratio >= 0.98) {
         leftRing.classList.add("joined");
         rightRing.classList.add("joined");
         leftRing.style.borderColor = "var(--gold-bright)";
