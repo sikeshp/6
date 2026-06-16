@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sikesh & Aswathi | Wedding Invitation</title>
   <meta name="description" content="Wedding invitation for Sikesh and Aswathi, September 07, 2026 at Cheshire Village.">
+
+  <!-- Open Graph / WhatsApp Link Preview Customization Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sikeshhp.github.io/6/">
+  <meta property="og:title" content="Sikesh & Aswathi | Wedding Invitation">
+  <meta property="og:description" content="We warmly invite you to join us and bless us with your presence on September 07, 2026.">
+  <meta property="og:image" content="whatsapp-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -185,17 +195,12 @@
       transform: translateY(0);
     }
 
-    /* --- Final Closing Section Stack Container Layout --- */
-    .closing {
-      text-align: center;
-      position: relative;
-    }
-
+    /* --- Interlocking Side Ring Layout Structure --- */
     .rings-wrapper {
       position: relative;
       width: 100%;
-      height: 140px;
-      margin: 30px auto 0;
+      height: 120px;
+      margin: 35px auto 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -233,7 +238,6 @@
       text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
     }
 
-    /* Initial base state: Hidden offscreen until scrolled near */
     #leftScrollRing, #rightScrollRing {
       opacity: 0;
     }
@@ -278,13 +282,13 @@
       padding: 64px 0;
     }
 
-    /* --- Mobile Typography Matrix --- */
+    /* --- Harmonized Mobile Typography Matrix --- */
     .names {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 0px;
+      gap: 8px;
       width: 100%;
     }
 
@@ -292,34 +296,26 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      line-height: 0.95;
-    }
-
-    .and-row {
-      margin: -5px 0;
       line-height: 1;
     }
 
-    .script {
-      font-family: "Great Vibes", cursive;
-      font-weight: 400;
-      font-size: clamp(3.8rem, 11vw, 7.5rem);
-      color: var(--cream);
+    .and-row {
+      margin: -2px 0;
+      line-height: 1;
     }
 
-    .serif {
+    .serif-full {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(2.8rem, 8vw, 5.8rem);
+      font-size: clamp(2.8rem, 8.5vw, 6rem);
       font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.05em;
       color: var(--cream);
-      margin-left: -2px;
     }
 
     .and {
       font-family: "Great Vibes", cursive;
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-size: clamp(2.2rem, 6.5vw, 4.5rem);
       color: rgba(247, 223, 191, .85);
     }
 
@@ -484,7 +480,7 @@
       align-items: center;
     }
 
-    /* --- High Precision Countdown System Matched to image_07d162.png --- */
+    /* --- High Precision Countdown System --- */
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -692,9 +688,11 @@
 </head>
 <body class="locked">
 
+  <!-- Traditional Kerala Patrika Cover Window Screen -->
   <div class="invitation-cover" id="invitationCover">
     <div class="kerala-text-container">
       <div class="kerala-art-row">
+        <!-- Traditional Nilavilakku Brass Lamp SVG -->
         <svg class="kerala-lamp" viewBox="0 0 100 150" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M50 10 C52 10, 54 15, 52 25 C51 30, 49 30, 48 25 C46 15, 48 10, 50 10 Z" fill="#ffd700" />
           <ellipse cx="50" cy="32" rx="6" ry="4" />
@@ -722,13 +720,14 @@
       <div>
         <div class="names" aria-label="Sikesh and Aswathi">
           <div class="name-row">
-            <span class="script">S</span><span class="serif">ikesh</span>
+            <span class="serif-full">Sikesh</span>
           </div>
           <div class="and-row">
             <span class="and">and</span>
           </div>
           <div class="name-row">
-            <span class="script">A</span><span class="serif">swathi</span>
+            <!-- Corrected spelling update directly applied here -->
+            <span class="serif-full">Aswathi</span>
           </div>
         </div>
         
@@ -832,6 +831,7 @@
         <span class="script">Thank you</span>
         <p class="lead">Your presence will make our celebration complete.</p>
         
+        <!-- Moving Interactive Rings Layout Block -->
         <div class="rings-wrapper">
           <div class="scrolling-ring" id="leftScrollRing">
             <span class="ring-initial">S</span>
@@ -946,7 +946,7 @@
       }
     });
 
-    // --- High Precision Corner-to-Center Scroll Ring Engine ---
+    // --- High Precision Corner-to-Center Scroll Ring Engine (Fixed Corner Start) ---
     const leftRing = document.getElementById("leftScrollRing");
     const rightRing = document.getElementById("rightScrollRing");
 
@@ -956,7 +956,6 @@
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       const currentScroll = window.scrollY;
       
-      // Target animation window to activate only when scrolling into the final viewport view
       const triggerThreshold = maxScroll * 0.75;
       if (currentScroll < triggerThreshold) {
         leftRing.style.opacity = "0";
@@ -964,14 +963,10 @@
         return;
       }
       
-      // Normalize animation scroll window ratio sequence
       const ratio = Math.min(1, (currentScroll - triggerThreshold) / (maxScroll - triggerThreshold));
-      
-      // Fixed corner-point pixel boundaries matching your marked screenshot positions
       const halfScreenWidth = window.innerWidth / 2;
-      const verticalStartOffset = -280; // Hidden at the top corners of the section container
+      const verticalStartOffset = -280; 
       
-      // Trajectory glide calculations pulling them down and in
       let leftX = -halfScreenWidth + (ratio * (halfScreenWidth - 14));  
       let rightX = halfScreenWidth - (ratio * (halfScreenWidth - 14)); 
       let currentY = verticalStartOffset - (ratio * verticalStartOffset);
